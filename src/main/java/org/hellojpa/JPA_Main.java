@@ -1,5 +1,7 @@
 package org.hellojpa;
 
+import org.hellojpa.Member;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,10 +12,11 @@ public class JPA_Main {
 
         EntityTransaction et = em.getTransaction(); // transaction 얻어오기
         et.begin(); // transaction 시작
-            /*
+
+        /*
         try {
-            Member mem = new Member(); // Member.java에 저장되어 있음
-            mem.setId(2);
+            org.hellojpa.Member mem = new org.hellojpa.Member(); // Member.java에 저장되어 있음
+            mem.setId(0);
             mem.setName("HelloB");
             em.persist(mem); // EntityManager에 저장
 
@@ -23,10 +26,11 @@ public class JPA_Main {
         } finally {
             em.close();
         }
-        회원 등록
-        */
+        // 회원 등록
 
-            /*
+         */
+
+        /*
         try {
             Member foundMem = em.find(Member.class, 1L); // 찾아서 가져오기
             System.out.println("foundMem.id = " + foundMem.getId());
@@ -43,12 +47,18 @@ public class JPA_Main {
         }
         회원 수정 및 삭제
         */
+
+        /*
         try {
-            List<org.hellojpa.Member> resultList = em.createQuery("select m from Member as m", org.hellojpa.Member.class)
+            Member mem = new org.hellojpa.Member(); // Member.java에 저장되어 있음
+            mem.setName("HelloB");
+            em.persist(mem); // EntityManager에 저장
+
+            List<Member> resultList = em.createQuery("select m from Member as m", Member.class)
                     .getResultList(); // Member 객체를 대상으로 쿼리 작성(dialect를 oracle로 바꾼다고 하더라도 그대로 적용) <> 테이블을 대상으로 쿼리를 쓸 경우 DB에 종속적인 설계
 
-            for (org.hellojpa.Member member: resultList) {
-                System.out.println("member.getName() = " + member.getName());
+            for (Member member: resultList) {
+                System.out.println("\nmember ID & NAME = " + member.getId() + member.getName());
             }
 
             et.commit();
@@ -57,6 +67,27 @@ public class JPA_Main {
         } finally {
             em.close();
         }
+        */
+
+        /**/
+        try {
+            Team team = new Team();
+            team.setName("Hanwha Eagles");
+            em.persist(team);
+
+            Member member = new Member();
+            member.setName("konu");
+            member.setTeam(team);
+            em.persist(member);
+
+            Member foundM = em.find(Member.class, member.getId());
+            System.out.println("foundM's team Name : " + foundM.getTeam().getName());
+        } catch (Exception e) {
+            et.rollback();
+        } finally {
+            em.close();
+        }
+
         /* 회원 정보 여러 개 조건에 따라 조회 >>> JPQL */
 
         emf.close(); // 어플리케이션 종료 시

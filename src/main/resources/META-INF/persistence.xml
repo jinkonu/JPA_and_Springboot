@@ -14,7 +14,7 @@
             <property name="hibernate.show_sql" value="true"/> <!-- // DB에 나가는 쿼리를 볼 것인지에 관한 옵션. 컴파일 시에 결과로 보임 -->
             <property name="hibernate.format_sql" value="true"/> <!-- 쿼리 보여줄 때 포맷에 맞춰줌 -->
             <property name="hibernate.use_sql_comments" value="true"/> <!-- 쿼리 보여줄 때 주석으로 쿼리가 나온 내용을 자연어로 알려줌 -->
-            <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
+            <property name="hibernate.hbm2ddl.auto" value="create" />
         </properties>
     </persistence-unit>
 </persistence>
