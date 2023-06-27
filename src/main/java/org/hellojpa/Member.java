@@ -1,4 +1,4 @@
-package hellojpa;
+package org.hellojpa;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-// @Table (name = "USER") >>> 어느 테이블에 Member 객체 데이터를 넣을지
+@Table (name = "USER") // >>> 어느 테이블에 Member 객체 데이터를 넣을지
 public class Member {
     @Id
     private long id;
