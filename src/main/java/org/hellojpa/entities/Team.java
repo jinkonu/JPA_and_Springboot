@@ -1,4 +1,4 @@
-package org.hellojpa;
+package org.hellojpa.entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;

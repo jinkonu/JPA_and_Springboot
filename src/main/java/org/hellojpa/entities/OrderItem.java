@@ -1,6 +1,8 @@
-package org.hellojpa;
+package org.hellojpa.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class OrderItem {
@@ -9,16 +11,20 @@ public class OrderItem {
     @Column( name = "ORDER_ITEM_ID" )
     private Long id;
 
-    @ManyToOne
+    @ManyToOne( fetch = FetchType.LAZY )
     @JoinColumn( name = "ORDER_ID" )
     private Orders orders;
 
-    @ManyToOne
+    @ManyToOne( fetch = FetchType.LAZY )
     @JoinColumn( name = "ITEM_ID" )
     private Item item;
 
     private int orderPrice;
     private int count;
+
+    @ManyToMany( mappedBy = "orderItems" )
+    private List<Category> categories = new ArrayList<>();
+
 
     public Long getId() {
         return id;
