@@ -10,6 +10,7 @@
             <property name="javax.persistence.jdbc.password" value=""/>
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/> <!-- oracle이면 OracleDialect -->
+            <!-- <property name="hibernate.dialect" value="org.hellojpa.H2Dialect.MyH2Dialect"/> --> <!-- SQL function 추가해서 쓸 때 -->
             <!-- 옵션 -->
             <property name="hibernate.show_sql" value="true"/> <!-- // DB에 나가는 쿼리를 볼 것인지에 관한 옵션. 컴파일 시에 결과로 보임 -->
             <property name="hibernate.format_sql" value="true"/> <!-- 쿼리 보여줄 때 포맷에 맞춰줌 -->

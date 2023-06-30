@@ -265,6 +265,13 @@ public class JPA_Main {
         System.out.println("name = " + memberDTO.getName());
         System.out.println("id = " + memberDTO.getId());
 
+        // custom function을 활용해서 조회할 때
+        List<String> list = em.createQuery("select function('group_concat', m. name)" +
+                        "from Member m", String.class)
+                .getResultList();
+        for (String str : list)
+            System.out.println("name : " + str);
+
         try {
             et.commit();
         } catch (Exception e) {
